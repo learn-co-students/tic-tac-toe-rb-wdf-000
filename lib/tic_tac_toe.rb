@@ -35,7 +35,7 @@ def valid_move?(board, index)
 end
 
 def turn(board)
-  until over?(board)
+  # until over?(board)
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
@@ -46,7 +46,7 @@ def turn(board)
     else
       turn(board)
     end
-  end
+  # end
 end
 
 def turn_count(board)
@@ -141,7 +141,9 @@ end
 # Define your play method below
 
 def play(board)
-  turn(board)
+  until over?(board)
+    turn(board)
+  end
 
   if won?(board)
     puts "Congratulations #{winner(board)}!"
