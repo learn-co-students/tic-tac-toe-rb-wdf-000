@@ -14,6 +14,7 @@ RSpec::Matchers.define :include_array do |expected|
   end
 end
 
+
 def run_file(file)
   eval(File.read(file), binding)
 end
@@ -39,3 +40,9 @@ def capture_puts
     $stdout = old_stdout
   end
 end
+
+def play(board)
+    9.times do
+      turn(board)
+    end
+  end
