@@ -30,11 +30,13 @@ def move(array, index, char)
 end
 
 def position_taken?(array, index)
-  if(array[index] == " " || array[index] == "" || array[index] == nil)
-    false
-  else
-    true
-  end
+  # if(array[index] == " " || array[index] == nil)
+  #   false
+  # else
+  #   true
+  # end
+  !(array[index] == " " || array[index] == nil)
+
 end
 
 def valid_move?(array, index)
@@ -82,7 +84,7 @@ def won?(array)
     element == " "
   end
 
-  if(empty == true)
+  if(empty)
     return !empty
 
   else
@@ -109,25 +111,27 @@ def full?(array)
 end
 
 def draw?(array)
-  b_win = won?(array)
-  b_full = full?(array)
+ 
+  !won?(array) && full?(array)
+ 
+  # b_win = won?(array)
+  # b_full = full?(array)
 
-  if(b_win == false && b_full == true)
-    true
-  elsif(b_win == false && b_full == false)
-    false
-  else
-    false
-  end
+  # if(!b_win&& b_full)
+  #   true
+  # elsif(!b_win && !b_full)
+  #   false
+  # else
+  #   false
+  # end
 end
 
 def over?(array)
   (won?(array)  || draw?(array) || full?(array) )
-
 end
 
 def winner(array)
-  if(won?(array) == false)
+  if(!won?(array))
     return nil
   else
     w_array = won?(array)
@@ -153,24 +157,3 @@ def play(array)
     puts "Cats Game!"
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
